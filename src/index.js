@@ -35,7 +35,6 @@ const MORSE_TABLE = {
     '---..': '8',
     '----.': '9',
     '-----': '0',
-    '**********': ' '
 };
 
 function decode(expr) {
@@ -46,7 +45,11 @@ function decode(expr) {
     }
     for (let i = 0; i < exprArr.length; i++) {
         exprArr[i] = exprArr[i].replaceAll('10', '.').replaceAll('11', '-').replaceAll('00', '');
+        if  (exprArr[i] === '**********') {
+            result = result + ' ';
+        } else {
         result = result + MORSE_TABLE[exprArr[i]]
+        }
     }
     return result
 }
